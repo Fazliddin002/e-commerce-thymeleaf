@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+
+<div class="col-6 offset-3">
+    <form th:action="${product == null ? '/product' : '/product/update/' + product.id}" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-header">
+                <span th:if="${product != null}">Update Product</span>
+                <span th:unless="${product != null}">Add Product</span>
+            </div>
+            <div class="card-body">
+                <input th:value="${product != null ? '/file/product/'+product.id : ''}" type="file" name="file">
+                <img th:src="${product != null ? '/file/product/' + product.id : '/images/default.png'}"
+                     alt="Product Image" width="150">
+                <hr>
+                <label>
+                    <input th:value="${product != null ? product.name : ''}" name="name" type="text"
+                           placeholder="Product Name" class="form-control">
+                </label>
+                <label>
+                    <input th:value="${product != null ? product.price : ''}" name="price" type="number"
+                           placeholder="Price" class="form-control">
+                </label>
+                <label>
+                    <select name="categoryId" class="form-control">
+                        <option th:each="category : ${categories}"
+                                th:text="${category.name}"
+                                th:value="${category.id}"
+                                th:selected="${product != null and product.category.id == category.id}">
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div class="card-footer">
+                <button th:unless="${product}" type="submit" class="btn btn-outline-success">save</button>
+                <button th:if="${product}" type="submit" class="btn btn-outline-success">update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

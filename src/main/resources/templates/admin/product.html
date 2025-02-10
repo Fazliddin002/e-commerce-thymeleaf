@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        .sider {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<th:block th:insert="fragments::header"/>
+<div class="row p-2">
+    <th:block th:insert="fragments::sider-admin"/>
+    <div class="col-9">
+        <a href="/admin/product/create" class="btn btn-outline-primary ">Add Product</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Photo</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product:${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <img width="50" height="50" th:src="|/file/product/${product.id}|" alt="">
+                </td>
+                <td th:text="${product.category.name}"></td>
+                <td>
+                    <div class="btn-group">
+                        <form action="/product/update" method="get">
+                            <input type="hidden" name="id" th:value="${product.id}">
+                            <button class="btn btn-outline-warning">edit</button>
+                        </form>
+                        <form action="/product/delete" method="post">
+                            <input type="hidden" name="id" th:value="${product.id}">
+                            <button class="btn btn-outline-danger">delete</button>
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

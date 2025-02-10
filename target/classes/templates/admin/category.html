@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        .sider {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<th:block th:insert="fragments::header"/>
+
+<div class="row">
+    <th:block th:insert="fragments::sider-admin" />
+    <div class="col-9 p-2">
+        <a href="/admin/category/create" class="btn btn-outline-primary ">Add Category</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category:${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td>
+                    <div class="btn-group">
+                        <form action="/category/update" method="get">
+                            <input type="hidden" name="id" th:value="${category.id}">
+                            <button class="btn btn-outline-warning">edit</button>
+                        </form>
+                        <form action="/category/delete" method="post">
+                            <input type="hidden" name="id" th:value="${category.id}">
+                            <button  class="btn btn-outline-danger">delete</button>
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

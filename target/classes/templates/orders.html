@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<th:block th:insert="fragments :: header"/>
+
+<div class="row">
+    <div class="col-9">
+        <table class="table table-stripped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order:${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.orderedAt}"></td>
+                <td><a th:href="|/order/info/${order.id}|" class="btn btn-outline-info">Info</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+
+<div class="col-6 offset-3">
+    <form th:action="${category==null?'/category/create':'/category/update'+category.id}" method="post">
+        <div class="card">
+            <div class="card-header">
+                <span th:if="${category}">Update Category</span>
+                <span th:unless="${category}">Add Category</span>
+            </div>
+            <div class="card-body">
+                <label>
+                    <input th:value="${category != null ? category.name :''}"  name="name" type="text" placeholder="Category Name" class="form-control" required>
+                </label>
+            </div>
+            <div class="card-footer">
+                <button th:unless="${category}" type="submit" class="btn btn-outline-success">save</button>
+                <button th:if="${category}" type="submit" class="btn btn-outline-success">update</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

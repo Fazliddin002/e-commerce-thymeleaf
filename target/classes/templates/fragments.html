@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<div th:fragment="header" class="bg-dark">
+    <div class="container">
+        <div class="bg-dark text-white row px-3">
+            <div class="col-1">
+                <a href="/" class="bg-dark">
+                    <h1>Logo</h1>
+                </a>
+            </div>
+
+            <div class="col-6 offset-5">
+                <ul style="height: 100%" class="list-unstyled d-flex align-items-center justify-content-center">
+                    <a th:if="${user != null and user.role == 'ADMIN'}" href="/admin/category">
+                        <li class="mx-3 text-white">Admin</li>
+                    </a>
+                    <a th:if="${basketSize!=null}" href="/basket">
+                        <li class="mx-3 text-white">Basket <span th:text="${basketSize}"></span></li>
+                    </a>
+                    <div class="offset-6">
+                        <form action="/logout" method="get" class="d-inline">
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
+                        </form>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="sider-admin" class="col-3 sider bg-dark ">
+    <div class="card">
+        <ul class="list-group">
+            <a href="/admin/category">
+                <li class="list-group-item">Category</li>
+            </a>
+            <a href="/admin/product">
+                <li class="list-group-item">Product</li>
+            </a>
+            <a href="/order">
+                <li class="list-group-item">Orders</li>
+            </a>
+            <a href="/">
+                <li class="list-group-item">Home</li>
+            </a>
+
+
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

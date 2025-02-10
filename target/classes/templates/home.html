@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        .sider {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<th:block th:insert="fragments :: header"/>
+<div class="row text-dark">
+    <div class="col-3 sider bg-dark ">
+        <div class="card">
+            <ul class="list-group">
+                <a href="?">
+                    <li class="list-group-item text-dark">All</li>
+                </a>
+                <a th:href="|?categoryId=${category.id}|" th:each="category:${categories}">
+                    <li th:text="${category.name}" class="list-group-item"></li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-9">
+        <div class="row">
+            <div class="col-3" th:each="product:${products}">
+                <div class="card">
+                    <div class="card-body">
+                        <img height="115px" style="width: 100%" th:src="|/file/product/${product.id}|" alt="">
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <p th:text="${product.name}"></p>
+                        Price: <span th:text="${product.name}"></span>
+                    </div>
+                    <form action="/basket" method="post">
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                        <input type="hidden" name="categoryId" th:value="${categoryId}">
+                        <button th:unless="${product.hasInBasket}" class="btn btn-outline-success">add to basket
+                        </button>
+                    </form>
+                    <form action="/basket/delete" method="post">
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                        <button th:if="${product.hasInBasket}" class="btn btn-outline-danger">remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
