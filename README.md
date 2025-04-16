@@ -1,94 +1,56 @@
-E-Commerce Platform (Thymeleaf)
+# E-Commerce System using Spring Boot
 
-Bu loyiha Spring Boot va Thymeleaf asosida yaratilgan E-Commerce (Internet-do'kon) tizimidir. Loyiha mahsulotlar, foydalanuvchilar va buyurtmalar bilan ishlash imkoniyatini beradi.
+This project is a simple **E-Commerce System** developed using **Spring Boot**, designed for managing products, categories, orders, and user baskets in an online store. The system includes an **admin panel** for managing products and categories, along with a **user interface** for browsing products and placing orders.
 
-Texnologiyalar
+## Features
 
-Loyiha quyidagi texnologiyalar asosida qurilgan:
+- **Admin Panel**: Manage categories, products, and orders.
+- **Product Management**: Add, edit, and delete products in the system.
+- **Category Management**: Add, edit, and delete product categories.
+- **User Basket**: Users can add products to their shopping cart.
+- **Order Management**: Users can place orders for products in their basket.
+- **File Handling**: Upload and display images for products.
+- **Authentication**: Login and logout functionalities with user session management.
 
-Backend:
+## Technologies Used
 
-Java 17
+- **Backend**: Spring Boot, Spring Security, Spring Session
+- **Frontend**: Thymeleaf
+- **Database**: PostgreSQL
+- **File Handling**: MultipartFile for image uploads
+- **UUID** for unique identifiers
+- **Authentication**: JWT for secure login
+- **Session**: For managing user sessions
 
-Spring Boot
+## Project Structure
 
-Spring Security
+The project consists of the following main components:
 
-Spring Data JPA
+- **Controllers**:
+  - `AdminController`: Manages admin functionalities like product and category management.
+  - `AttachmentController`: Handles file uploads and image management.
+  - `BasketController`: Manages user shopping cart functionality.
+  - `CategoryController`: Manages product categories.
+  - `HomeController`: Handles the homepage and product listing.
+  - `LoginController`: Manages user login and authentication.
+  - `OrderController`: Manages user orders.
 
-PostgreSQL
+- **Models**: Includes entities for products, categories, orders, and user information.
+- **Views**: Uses Thymeleaf templates to display the frontend pages.
 
-Hibernate
+## Installation and Setup
 
-Lombok
+Follow the steps below to set up the project locally:
 
-Frontend:
+### Prerequisites
 
-Thymeleaf
+- Java 11 or higher
+- Maven (for building the project)
+- PostgreSQL (or any other supported database)
+- IDE (IntelliJ IDEA, Eclipse, etc.)
 
-Bootstrap
+### Steps to Run
 
-HTML, CSS, JavaScript
-
-O'rnatish va Ishga Tushirish
-
-1. Loyiha kodini yuklash
-
-git clone https://github.com/Fazliddin002/e-commerce-thymeleaf.git
-cd e-commerce-thymeleaf
-
-2. PostgreSQL bazasini sozlash
-
-Loyihaning application.properties yoki application.yml faylida PostgreSQL konfiguratsiyasini o'zgartiring:
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/ecommerce_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-
-3. Loyihani ishga tushirish
-
-mvn spring-boot:run
-
-Agar mvn komandasi ishlamasa, Maven o‘rnatilganligini tekshiring.
-
-Xususiyatlar
-
-Foydalanuvchilar:
-
-Ro‘yxatdan o‘tish va tizimga kirish
-
-Admin va oddiy foydalanuvchi rollari
-
-Mahsulotlar:
-
-Mahsulot qo‘shish, tahrirlash va o‘chirish
-
-Katalogni ko‘rish
-
-Buyurtmalar:
-
-Savatchaga mahsulot qo‘shish
-
-Buyurtmani tasdiqlash
-
-Foydalanish
-
-Loyihani ishga tushirgandan so‘ng, http://localhost:8080/ sahifasiga tashrif buyuring.
-
-Admin uchun:
-
-Login: admin@example.com
-
-Parol: admin123
-
-Muammo va Takliflar
-
-Agar sizda muammo yoki takliflar bo‘lsa, Issues bo‘limiga yozing.
-
-Muallif
-
-Fazliddin
-
-Litsenziya
-
-Bu loyiha ochiq kodli va bepul foydalanish uchun mo‘ljallangan.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/e-commerce-system.git
