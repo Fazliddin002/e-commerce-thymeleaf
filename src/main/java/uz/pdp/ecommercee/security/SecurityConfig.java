@@ -28,7 +28,7 @@ public class SecurityConfig {
         });
         http.formLogin(manager->{
           manager.loginPage("/login")
-                  .defaultSuccessUrl("/")
+                  .defaultSuccessUrl("/",true)
                   .permitAll();
         });
         http.userDetailsService(customUserDetailsService);

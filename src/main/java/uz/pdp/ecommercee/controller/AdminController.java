@@ -33,11 +33,11 @@ public class AdminController {
         model.addAttribute("products", productRepo.findAll());
         return "admin/product";
     }
-//
-//    @GetMapping("/product/create")
-//    public String productCreate(Model model) {
-//        model.addAttribute("categories", categoryRepo.findAll());
-//        return "admin/create-product";
-//    }  // jarayonda kerak  bo'masa ochiraman
+
+    @GetMapping("/product/create")
+    public String productCreate(Model model) {
+        model.addAttribute("categories", categoryRepo.findAll());
+        return "admin/create-product";
+    }  // jarayonda kerak  bo'masa ochiraman
     
 }

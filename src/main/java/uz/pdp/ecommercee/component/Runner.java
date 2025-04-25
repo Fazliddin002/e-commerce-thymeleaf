@@ -25,12 +25,7 @@ public class Runner implements CommandLineRunner {
         if (ddl.equals("create")){
             userRepo.save(user);
             for (int i = 1; i <=10 ; i++) {
-                userRepo.save(new User(
-                        i,
-                        "user"+i,
-                        passwordEncoder.encode("root"+i),
-                        "ADMIN"
-                ));
+                userRepo.save(User.builder().username("user"+i).password(passwordEncoder.encode("root"+i)).role("USER").build());
             }
         }
     }
